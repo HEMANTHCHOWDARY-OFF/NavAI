@@ -1,28 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const AIInterviewSidebar = ({ isOpen, toggleSidebar }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [recentInterviews] = useState([
-    { id: 1, title: 'Technical Interview - Frontend', date: '2023-10-15', type: 'Technical' },
-    { id: 2, title: 'HR Interview - Behavioral', date: '2023-10-12', type: 'HR' },
-    { id: 3, title: 'System Design Interview', date: '2023-10-10', type: 'Technical' },
-    { id: 4, title: 'Behavioral Interview - Leadership', date: '2023-10-08', type: 'Behavioral' },
-  ]);
 
   const handleNewInterview = () => {
     // Logic to start a new interview session
-    console.log('Starting new interview session');
+    window.location.reload();
   };
-
-  const handleSearchInterviews = () => {
-    // Logic to search interviews
-    console.log('Searching interviews with term:', searchTerm);
-  };
-
-  const filteredInterviews = recentInterviews.filter(interview =>
-    interview.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    interview.type.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <>
@@ -35,15 +18,14 @@ const AIInterviewSidebar = ({ isOpen, toggleSidebar }) => {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-16 h-full bg-white shadow-lg transition-transform duration-300 z-40 w-64 border-r border-gray-200 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      } md:translate-x-0`}>
-        <div className="p-6">
+      <aside className={`fixed left-0 top-16 h-full bg-white shadow-lg transition-transform duration-300 z-40 w-64 border-r border-gray-200 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:translate-x-0`}>
+        <div className="p-6 h-full flex flex-col">
           {/* NavAI Logo at Top */}
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
               </svg>
             </div>
             <h2 className="text-lg font-bold text-gray-900">AI Interview</h2>
@@ -52,57 +34,69 @@ const AIInterviewSidebar = ({ isOpen, toggleSidebar }) => {
           {/* New Interview Button */}
           <button
             onClick={handleNewInterview}
-            className="w-full bg-primary-blue text-white p-3 rounded-lg hover:bg-blue-600 transition-colors font-medium mb-6 flex items-center justify-center space-x-2"
+            className="w-full bg-primary-blue text-white p-3 rounded-lg hover:bg-blue-600 transition-colors font-medium mb-8 flex items-center justify-center space-x-2 shadow-md"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-7 4h12a2 2 0 002 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             <span>New Interview</span>
           </button>
 
-          {/* Search Interviews */}
-          <div className="mb-6">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search Interviews"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue"
-              />
-              <svg className="absolute left-3 top-3.5 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+          {/* Instructions / How it Works */}
+          <div className="flex-1 overflow-y-auto">
+            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">How it Works</h3>
+
+            <div className="space-y-6 relative before:absolute before:left-[15px] before:top-2 before:h-[calc(100%-20px)] before:w-0.5 before:bg-gray-100">
+
+              {/* Step 1 */}
+              <div className="relative flex items-start space-x-4">
+                <div className="z-10 w-8 h-8 rounded-full bg-white border-2 border-primary-blue flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="text-primary-blue font-bold text-sm">1</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 text-sm">Upload Resume</h4>
+                  <p className="text-xs text-gray-500 mt-1">Upload your resume so the AI can ask relevant questions.</p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative flex items-start space-x-4">
+                <div className="z-10 w-8 h-8 rounded-full bg-white border-2 border-purple-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="text-purple-500 font-bold text-sm">2</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 text-sm">Choose Type</h4>
+                  <p className="text-xs text-gray-500 mt-1">Select HR, Technical, or Behavioral interview mode.</p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative flex items-start space-x-4">
+                <div className="z-10 w-8 h-8 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <span className="text-orange-500 font-bold text-sm">3</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 text-sm">Start Speaking</h4>
+                  <p className="text-xs text-gray-500 mt-1">Engage in a voice-based interview with real-time feedback.</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Pro Tip */}
+            <div className="mt-8 bg-green-50 p-4 rounded-xl border border-green-100">
+              <div className="flex items-center space-x-2 mb-2">
+                <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                <span className="text-xs font-bold text-green-700">PRO TIP</span>
+              </div>
+              <p className="text-xs text-green-800 leading-relaxed">
+                Treat this like a real interview. Speak clearly and take your time to answer.
+              </p>
             </div>
           </div>
 
-          {/* Recent Interviews */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">Recent Interviews</h3>
-            <ul className="space-y-2 max-h-96 overflow-y-auto">
-              {filteredInterviews.map((interview) => (
-                <li
-                  key={interview.id}
-                  className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
-                >
-                  <div className="font-medium text-gray-900 text-sm">{interview.title}</div>
-                  <div className="flex items-center justify-between mt-1">
-                    <span className="text-xs text-gray-500">{interview.date}</span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      interview.type === 'Technical' ? 'bg-blue-100 text-blue-800' :
-                      interview.type === 'HR' ? 'bg-green-100 text-green-800' :
-                      'bg-purple-100 text-purple-800'
-                    }`}>
-                      {interview.type}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {filteredInterviews.length === 0 && searchTerm && (
-              <p className="text-sm text-gray-500 text-center py-4">No interviews found</p>
-            )}
-          </div>
         </div>
       </aside>
     </>

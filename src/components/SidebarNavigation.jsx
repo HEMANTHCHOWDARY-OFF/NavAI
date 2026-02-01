@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
-const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
+const SidebarNavigation = ({ isOpen, toggleSidebar, activeSection, setActiveSection }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const [expandedItems, setExpandedItems] = useState({});
-  const [activeSection, setActiveSection] = useState('home');
 
   const toggleExpanded = (item) => {
     setExpandedItems(prev => ({
@@ -35,15 +34,14 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-20 h-full bg-white shadow-lg transition-transform duration-300 z-40 w-64 border-r border-gray-200 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      } md:translate-x-0`}>
+      <aside className={`fixed left-0 top-20 h-full bg-white shadow-lg transition-transform duration-300 z-40 w-64 border-r border-gray-200 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:translate-x-0`}>
         <div className="p-6">
           {/* NavAI Logo at Top */}
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
               </svg>
             </div>
             <h2 className="text-lg font-bold text-gray-900">NavAI</h2>
@@ -52,9 +50,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
           <nav className="space-y-2">
             {/* About NavAI */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'about' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'about' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('about')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'about' ? 'text-white' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,9 +65,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
 
             {/* Profile */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'profile' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'profile' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('profile')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'profile' ? 'text-white' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,9 +78,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
 
             {/* Settings */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'settings' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'settings' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('settings')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'settings' ? 'text-white' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,9 +91,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
 
             {/* Instagram */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'instagram' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'instagram' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('instagram')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'instagram' ? 'text-white' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 24 24">
@@ -110,9 +104,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
 
             {/* YouTube */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'youtube' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'youtube' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('youtube')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'youtube' ? 'text-white' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 24 24">
@@ -124,9 +117,8 @@ const SidebarNavigation = ({ isOpen, toggleSidebar }) => {
 
             {/* Help / FAQ */}
             <div
-              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${
-                activeSection === 'help' ? 'bg-primary-blue text-white' : ''
-              }`}
+              className={`flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${activeSection === 'help' ? 'bg-primary-blue text-white' : ''
+                }`}
               onClick={() => handleSectionClick('help')}
             >
               <svg className={`w-5 h-5 ${activeSection === 'help' ? 'text-white' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

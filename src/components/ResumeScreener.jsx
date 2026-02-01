@@ -10,7 +10,7 @@ const ResumeScreener = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="min-h-screen bg-white flex w-full">
       {/* Mobile Menu Toggle */}
       <button
         onClick={toggleSidebar}

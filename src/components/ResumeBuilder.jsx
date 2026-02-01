@@ -108,7 +108,7 @@ const ResumeBuilder = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="min-h-screen bg-white flex w-full">
       {/* Mobile Menu Toggle */}
       <button
         onClick={toggleSidebar}
@@ -120,9 +120,9 @@ const ResumeBuilder = () => {
       </button>
 
       {/* Resume Builder Sidebar */}
-      <ResumeBuilderSidebar 
-        isOpen={sidebarOpen} 
-        toggleSidebar={toggleSidebar} 
+      <ResumeBuilderSidebar
+        isOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
         onNewChat={resetForm}
         onLoadResume={loadResume}
         user={user}
@@ -130,8 +130,8 @@ const ResumeBuilder = () => {
       />
 
       {/* Resume Builder Main Content */}
-      <ResumeBuilderMain 
-        formData={formData} 
+      <ResumeBuilderMain
+        formData={formData}
         setFormData={setFormData}
         saveResume={saveResume}
         user={user}
